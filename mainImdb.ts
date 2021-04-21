@@ -18,16 +18,6 @@ let productor1: Professional = new Professional("nombreProductor1", 41, "femenin
 let productor2: Professional = new Professional("nombreProductor2", 42, "masculino", 81, 1.79, "cabelloProductor2", "ojosProductor2", "caucásica", false, "española", 0, "productor");
 let productor3: Professional = new Professional("nombreProductor3", 43, "femenino", 71, 1.78, "cabelloProductor3", "ojosProductor3", "negroide", true, "española", 0, "productor");
 
-let distribuidor1: Professional = new Professional("nombreDistribuidor1", 45, "masculino", 80, 1.75, "cabelloDistribuidor1", "ojosDistribuidor1", "caucásica", false, "española", 0, "distribuidor");
-let distribuidor2: Professional = new Professional("nombreDistribuidor2", 46, "masculino", 80, 1.74, "cabelloDistribuidor2", "ojosDistribuidor2", "caucásica", true, "española", 0, "distribuidor");
-let distribuidor3: Professional = new Professional("nombreDistribuidor3", 47, "femenino", 80, 1.76, "cabelloDistribuidor3", "ojosDistribuidor3", "caucásica", false, "española", 0, "distribuidor");
-
-// actor1.imprimirValores();
-// director2.imprimirValores();
-// escritor3.imprimirValores();
-// productor2.imprimirValores();
-// distribuidor1.imprimirValores();
-
 let movie1 : Movie = new Movie ("El señor de los ganchitos", 2002, "Española", "Aventura");
 let movie2 : Movie = new Movie ("pelicula2", 2015, "Española", "Aventura");
 let movie3 : Movie = new Movie ("pelicula3", 2020, "Española", "Aventura");
@@ -35,5 +25,15 @@ let movie3 : Movie = new Movie ("pelicula3", 2020, "Española", "Aventura");
 let listaimdb: Imdb = new Imdb([movie1, movie2, movie3]);
 movie1.setActors([actor1, actor2, actor3]);
 movie2.setActors([actor1, actor2]);
-
+let listaimdb3: Imdb = new Imdb([movie2, movie3]);
 console.log(listaimdb);
+
+const fs = require("fs");
+
+
+let listaimdb2 : Imdb = listaimdb.obtenerInstanciaIMDB("imdbBBDD");
+
+console.log(listaimdb2);
+console.log("\n");
+listaimdb.escribirEnFicheroJSON("superFichero");
+console.log(listaimdb3.obtenerInstanciaIMDB("superFichero"));
