@@ -29,8 +29,18 @@ export class Professional  {
     }
 
     imprimirValores(): void {
-        console.log((`\nLos valores de sus atributos son:\n· Nombre: ${this.name}\n· Edad: ${this.age}\n· ${this.genre}\n· Peso: ${this.weight}\n· Altura: ${this.height}\n· Color de cabello: ${this.hairColor}\n· Color de ojos: ${this.eyeColor}\n· Raza: ${this.race}\n· Esta retirado: ${this.isRetired}\n· Nacionalidad: ${this.nationality}\n· Numero de Oscar: ${this.oscarsNumber}\n· Profesión: ${this.profession}`));
+        let properties : string = "";
+        for (let property in this) {
+            if (this[property].toString().search(/function/i)) {
+                properties += `${property} - ${this[property]}\n`;
+            }
+        }
+        console.log(properties);
     }
+
+    // imprimirValores(): void {
+    //     console.log((`\nLos valores de sus atributos son:\n· Nombre: ${this.name}\n· Edad: ${this.age}\n· ${this.genre}\n· Peso: ${this.weight}\n· Altura: ${this.height}\n· Color de cabello: ${this.hairColor}\n· Color de ojos: ${this.eyeColor}\n· Raza: ${this.race}\n· Esta retirado: ${this.isRetired}\n· Nacionalidad: ${this.nationality}\n· Numero de Oscar: ${this.oscarsNumber}\n· Profesión: ${this.profession}`));
+    // }
 
 }
 
