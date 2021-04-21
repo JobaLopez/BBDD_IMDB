@@ -1,4 +1,5 @@
 class Professional  {
+
     public name: string;
     public age: number;
     public genre: string;
@@ -11,4 +12,7 @@ class Professional  {
     public nationality: string;
     public oscarsNumber: number;
     public profession: string;
+
 }
+
+export { Professional };
