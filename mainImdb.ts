@@ -28,9 +28,6 @@ movie2.setActors([actor1, actor2]);
 let listaimdb3: Imdb = new Imdb([movie2, movie3]);
 console.log(listaimdb);
 
-const fs = require("fs");
-
-
 let listaimdb2 : Imdb = listaimdb.obtenerInstanciaIMDB("imdbBBDD");
 
 console.log(listaimdb2);
