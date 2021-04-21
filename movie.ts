@@ -14,7 +14,7 @@ class Movie {
     public isMCU : boolean;
     public mainCharacterName : string;
     public producer : Professional;
-    public distributor : Professional;
+    public distributor : string;
     public genre : string;
 
     constructor(title : string, releaseYear : number, nationality : string, genre : string){
@@ -27,6 +27,7 @@ class Movie {
     }
 
     //GETTERS Y SETTERS DE TODOS LOS ATRIBUTOS
+    //Al ser publicos podrían modificarse sin ellos pero va a quedar más limpio con ellos.
     public getTitle() : string {
 
         return this.title;
@@ -159,13 +160,13 @@ class Movie {
 
     }
 
-    public getDistributor() : Professional {
+    public getDistributor() : string {
 
         return this.distributor;
 
     }
 
-    public setDistributor(newDistributor : Professional) {
+    public setDistributor(newDistributor : string) {
 
         this.distributor = newDistributor;
 
@@ -184,7 +185,7 @@ class Movie {
     }
 
     //MÉTODO PARA MOSTRAR LOS DATOS DE LAS PELÍCULAS
-    public showProperties() : string {
+    public showProperties() : string{
 
         let properties : string = "";
 
@@ -192,10 +193,65 @@ class Movie {
 
             if (this[property].toString().search(/function/i)) {
 
-                properties += `${property} - ${this[property]}\n`;
+                if (property == "actors") {
+
+                    for (let i = 0; i < this.actors.length; i++) {
+                        
+                        properties += `Actor:\n`;
+
+                        for (let propiedad in this.actors[i]){
+
+                            properties += `${propiedad} - ${this.actors[i][propiedad]}\n`;
+
+                        }
+                        
+                        properties += `\n`;
+
+                    }
+                } else if (property == "director") {
+
+                    properties += `Director:\n`;
+                    
+                    for (let propiedad in this.director){
+
+                        properties += `${propiedad} - ${this.director[propiedad]}\n`;
+
+                    }
+
+                    properties += `\n`;
+
+                } else if (property == "producer"){
+
+                    properties += `Producer:\n`;
+                    
+                    for (let propiedad in this.producer){
+
+                        properties += `${propiedad} - ${this.producer[propiedad]}\n`;
+
+                    }
+
+                    properties += `\n`;
+
+                } else if (property == "writer"){
+
+                    properties += `Writer:\n`;
+                    
+                    for (let propiedad in this.writer){
+
+                        properties += `${propiedad} - ${this.writer[propiedad]}\n`;
+
+                    }
+
+                    properties += `\n`;
+
+                } else {
+
+                    properties += `${property.charAt(0).toUpperCase() + property.slice(1)}: ${this[property]}\n\n`;
+
+                }
 
             }
-
+                
         }
 
         return properties;
