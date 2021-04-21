@@ -10,7 +10,7 @@ let p5 : Professional = new Professional ("Jim Halpert", 58, "Hombre", 87, 190, 
 let actors : Professional[] = [p3, p4];
 
 let movie : Movie = new Movie ("El señor de los ganchitos", 2002, "Española", "Aventura");
-console.log(movie.showProperties());
+// console.log(movie.showProperties());
 movie.setActors(actors);
 movie.setDirector(p2);
 movie.setDistributor("Farmer Bros.");
