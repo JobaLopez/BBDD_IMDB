@@ -47,16 +47,12 @@ movie3.setProducer(productor3);
 
 console.log(listaimdb);
 
-const fs = require("fs");
+let listaimdb2: Imdb = new Imdb([movie2, movie3]);
+console.log(listaimdb);
 
-let imdbJSON = JSON.stringify(listaimdb);
-fs.writeFileSync("imdbBBDD.json", imdbJSON);
-
-fs.readFileSync("imdbBBDD.json");
-
-const obj = JSON.parse(imdbJSON);
-
-console.log(obj);
+console.log("\n");
+listaimdb.escribirEnFicheroJSON("imdbBBDD");
+console.log(listaimdb2.obtenerInstanciaIMDB("imdbBBDD"));
 
 // listaimdb.escribirEnFicheroJSON("prueba1.json");
 
