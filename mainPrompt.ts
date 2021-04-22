@@ -9,14 +9,14 @@ const rl = readline.createInterface({
 
 
 rl.question("Titulo: ", function(title) {
-    rl.question("Año de lanzamiento ", function(releaseYear) {
+    rl.question("Año de lanzamiento ", function(releaseYear: number) {
         rl.question("Actores: ", function(actors) {
             rl.question("Nacionalidad: ", function(nationality) {
                 rl.question("Director: ", function(director) {
                     rl.question("Escritor: ", function(writer) {
                         rl.question("Idioma: ", function(language) {
                             rl.question("Plataforma: ", function(platform) {
-                                rl.question("Es del Universo Marvel: ", function(isMCU) {
+                                rl.question("Es del Universo Marvel: ", function(isMCU: boolean) {
                                     rl.question("Personaje principal: ", function(mainCharacterName) {
                                         rl.question("Productor: ", function(producer) {
                                             rl.question("Distribuidor: ", function(distributor) {
