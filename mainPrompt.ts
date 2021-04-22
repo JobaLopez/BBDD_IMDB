@@ -1,3 +1,4 @@
+import { Imdb } from './imdb';
 import { Movie } from './movie';
 
 const readline = require("readline");
@@ -5,7 +6,7 @@ const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
-
+let movieN: Movie;
 rl.question("Titulo: ", function(title) {
     rl.question("Año de lanzamiento ", function(releaseYear) {
         rl.question("Actores: ", function(actors) {
@@ -19,24 +20,21 @@ rl.question("Titulo: ", function(title) {
                                         rl.question("Productor: ", function(producer) {
                                             rl.question("Distribuidor: ", function(distributor) {
                                                rl.question("Género: ", function(genre) {
-                                                    let pelicula5: Movie = new Movie (title, releaseYear, nationality, genre);
-                                                    pelicula5.setActors(actors);
-                                                    pelicula5.setDirector(director);
-                                                    pelicula5.setWriter(writer);
-                                                    pelicula5.setLanguage(language);
-                                                    pelicula5.setPlatform(platform);
-                                                    pelicula5.setIsMCU(isMCU);
-                                                    pelicula5.setMainCharacterName(mainCharacterName);
-                                                    pelicula5.setProducer(producer);
-                                                    pelicula5.setDistributor(distributor);                                                    
+                                                    movieN = new Movie (title, Number(releaseYear), nationality, genre);
+                                                    movieN.setActors(actors);
+                                                    movieN.setDirector(director);
+                                                    movieN.setWriter(writer);
+                                                    movieN.setLanguage(language);
+                                                    movieN.setPlatform(platform);
+                                                    if (isMCU.toLowerCase() == "true") {
+                                                        movieN.setIsMCU(true);
+                                                    } else {
+                                                        movieN.setIsMCU(false);
+                                                    }
+                                                    movieN.setMainCharacterName(mainCharacterName);
+                                                    movieN.setProducer(producer);
+                                                    movieN.setDistributor(distributor);                                                    
                                                     rl.close();
-                                                    const fs = require("fs");
-                                                    let pelicula5JSON = JSON.stringify(pelicula5);
-                                                    let imdbBBDD2 = fs.readFileSync("./imdbBBDD.json");
-                                                    let pelicula5js = JSON.parse(pelicula5JSON);
-                                                    let imdbBBDD2js = JSON.parse(imdbBBDD2);
-                                                    imdbBBDD2js.movies.push(pelicula5js);                                        
-                                                    fs.writeFileSync("newJSON.json", imdbBBDD2js);
                                                });
                                             });
                                         });
@@ -51,5 +49,23 @@ rl.question("Titulo: ", function(title) {
     });
 });
 
+rl.on("close", function () {
 
+    console.log(movieN.showProperties());
+
+    const fs = require("fs");
+
+    let imdb = new Imdb (JSON.parse(fs.readFileSync(`imdbBBDD.json`)));
+
+    imdb.movies.unshift(movieN);
+
+    console.log(imdb);
+
+    imdb.escribirEnFicheroJSON("imdbBBDD");
+
+    
+       
+    process.exit(0);
+
+});
 
