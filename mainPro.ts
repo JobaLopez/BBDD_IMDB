@@ -47,17 +47,17 @@ movie3.setProducer(productor3);
 
 console.log(listaimdb);
 
-// const fs = require("fs");
+const fs = require("fs");
 
-// let imdbJSON = JSON.stringify(listaimdb);
-// fs.writeFileSync("imdbBBDD.json", imdbJSON);
+let imdbJSON = JSON.stringify(listaimdb);
+fs.writeFileSync("imdbBBDD.json", imdbJSON);
 
-// fs.readFileSync("imdbBBDD.json");
+fs.readFileSync("imdbBBDD.json");
 
-// const obj = JSON.parse(imdbJSON);
+const obj = JSON.parse(imdbJSON);
 
-// console.log(obj);
+console.log(obj);
 
-listaimdb.escribirEnFicheroJSON("prueba1.json");
+// listaimdb.escribirEnFicheroJSON("prueba1.json");
 
-console.log(listaimdb.obtenerInstaciaIMDB("prueba1.json"));
+// console.log(listaimdb.obtenerInstaciaIMDB("prueba1.json"));
